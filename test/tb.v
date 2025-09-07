@@ -27,8 +27,29 @@ module tb ();
   wire VGND = 1'b0;
 `endif
 
+wire [3:0] A;
+wire [3:0] B;
+wire [3:0] ALU_Sel;
+wire [3:0] ALU_Out;
+wire Carry;
+wire Zero;
+wire Negative;
+wire Overflow;
+
+assign ui_in[3:0] = A;
+assign ui_in[7:4] = B;
+assign uio_in[3:0] = ALU_Sel;
+assign uio_in[7:4] = 4'h0;
+assign uo_out[3:0] = ALU_Out;
+assign uo_out[4] = Overflow;
+assign uo_out[5] = Negative;
+assign uo_out[6] = Zero;
+assign uo_out[7] = Carry;
+
+
+
   // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  tt_um_alu_4bit_wrapper user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
